@@ -1,0 +1,808 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shree Krishna - Divine Transcendence</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/TextPlugin.min.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: #1a0b0b;
+            overflow-x: hidden;
+            background: #0a0a0a;
+        }
+
+        .section {
+            min-height: 100vh;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Hero Section - The Grand Stage */
+        .hero {
+            background: radial-gradient(ellipse at center, #1a0d2e 0%, #0f051a 50%, #000000 100%);
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Cosmic Background */
+        .cosmic-bg {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background:
+                radial-gradient(2px 2px at 20px 30px, #ffd700, transparent),
+                radial-gradient(2px 2px at 40px 70px, rgba(255, 255, 255, 0.8), transparent),
+                radial-gradient(1px 1px at 90px 40px, #ffd700, transparent),
+                radial-gradient(1px 1px at 130px 80px, rgba(255, 255, 255, 0.6), transparent),
+                radial-gradient(2px 2px at 160px 30px, #ffd700, transparent);
+            background-repeat: repeat;
+            background-size: 200px 100px;
+            animation: twinkle 4s linear infinite;
+            opacity: 0.6;
+        }
+
+        @keyframes twinkle {
+
+            0%,
+            100% {
+                opacity: 0.6;
+            }
+
+            50% {
+                opacity: 1;
+            }
+        }
+
+        @keyframes pulse-aura {
+
+            0%,
+            100% {
+                transform: translate(-50%, -50%) scale(1);
+                opacity: 0.3;
+            }
+
+            50% {
+                transform: translate(-50%, -50%) scale(1.2);
+                opacity: 0.6;
+            }
+        }
+
+        @keyframes gradient-shift {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        @keyframes float-krishna {
+
+            0%,
+            100% {
+                transform: translateY(0) rotate(0deg);
+            }
+
+            25% {
+                transform: translateY(-10px) rotate(1deg);
+            }
+
+            75% {
+                transform: translateY(-5px) rotate(-1deg);
+            }
+        }
+
+        /* Floating Divine Elements */
+        .divine-elements {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+
+        .divine-element {
+            position: absolute;
+            font-size: clamp(2rem, 4vw, 4rem);
+            opacity: 0;
+            animation: divine-float 8s ease-in-out infinite;
+        }
+
+        .divine-element.peacock {
+            top: 15%;
+            left: 10%;
+            color: #00bfff;
+            animation-delay: 0s;
+        }
+
+        .divine-element.flute {
+            top: 20%;
+            right: 15%;
+            color: #ffd700;
+            animation-delay: 2s;
+        }
+
+        .divine-element.lotus {
+            bottom: 25%;
+            left: 8%;
+            color: #ff69b4;
+            animation-delay: 4s;
+        }
+
+        .divine-element.wheel {
+            top: 60%;
+            right: 20%;
+            color: #ffa500;
+            animation-delay: 1s;
+        }
+
+        .divine-element.om {
+            bottom: 30%;
+            right: 10%;
+            color: #9370db;
+            animation-delay: 3s;
+        }
+
+        .divine-element.conch {
+            top: 40%;
+            left: 5%;
+            color: #20b2aa;
+            animation-delay: 5s;
+        }
+
+        @keyframes divine-float {
+
+            0%,
+            100% {
+                opacity: 0;
+                transform: translateY(0) rotate(0deg) scale(1);
+            }
+
+            20%,
+            80% {
+                opacity: 1;
+            }
+
+            50% {
+                transform: translateY(-30px) rotate(180deg) scale(1.2);
+            }
+        }
+
+        /* Hero Content */
+        .hero-content {
+            position: absolute;
+            bottom: 15%;
+            left: 50%;
+            transform: translateX(-50%);
+            text-align: center;
+            z-index: 20;
+        }
+
+        .main-title {
+            font-family: 'Cinzel', serif;
+            font-size: clamp(2.5rem, 6vw, 5rem);
+            font-weight: 800;
+            background: linear-gradient(135deg, #ffd700, #ffed4e, #ffa500, #ff6b6b);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1rem;
+            opacity: 0;
+            transform: translateY(50px);
+            text-shadow: 0 0 30px rgba(255, 215, 0, 0.5);
+        }
+
+        .divine-subtitle {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(1.2rem, 3vw, 1.8rem);
+            color: rgba(255, 255, 255, 0.9);
+            font-style: italic;
+            margin-bottom: 2rem;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .explore-btn {
+            padding: 1.2rem 3rem;
+            background: linear-gradient(135deg, transparent, transparent);
+            border: 2px solid #ffd700;
+            color: #ffd700;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            position: relative;
+            overflow: hidden;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.3s ease;
+            display: block;
+            width: 320px;
+            margin: auto;
+        }
+
+
+        .explore-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 40px rgba(255, 215, 0, 0.4);
+        }
+
+        /* Leela Section - Krishna's Divine Play */
+        .leela {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            padding: 6rem 2rem;
+            position: relative;
+        }
+
+        .leela::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="paisley" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse"><circle cx="10" cy="10" r="1" fill="rgba(255,255,255,0.1)"/></pattern></defs><rect width="100" height="100" fill="url(%23paisley)"/></svg>');
+            opacity: 0.3;
+        }
+
+        .leela-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .section-title {
+            font-family: 'Cinzel', serif;
+            font-size: clamp(3rem, 6vw, 5rem);
+            color: white;
+            text-align: center;
+            margin-bottom: 4rem;
+            opacity: 0;
+            transform: translateY(50px);
+            text-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+        }
+
+        .leela-showcase {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 3rem;
+            margin-top: 4rem;
+        }
+
+        .leela-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 25px;
+            padding: 3rem;
+            text-align: center;
+            opacity: 0;
+            transform: translateY(100px) rotateX(15deg);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .leela-card::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, #ffd700, #ff6b6b, #4ecdc4, #45b7d1, #ffd700);
+            background-size: 400% 400%;
+            border-radius: 25px;
+            opacity: 0;
+            z-index: -1;
+            animation: border-glow 4s ease infinite;
+        }
+
+        .leela-card:hover::before {
+            opacity: 1;
+        }
+
+        @keyframes border-glow {
+
+            0%,
+            100% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+        }
+
+        .leela-card:hover {
+            transform: translateY(-10px) rotateX(0deg) scale(1.02);
+        }
+
+        .leela-icon {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, #ffd700, #ff6b6b);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .leela-title {
+            font-family: 'Cinzel', serif;
+            font-size: 2rem;
+            color: white;
+            margin-bottom: 1rem;
+        }
+
+        .leela-text {
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.8;
+            font-size: 1.1rem;
+        }
+
+        /* Wisdom Section - Sacred Teachings */
+        .wisdom {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            padding: 6rem 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .wisdom::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 50% 50%, rgba(255, 215, 0, 0.1) 0%, transparent 50%);
+        }
+
+        .wisdom-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .wisdom-verse {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(2rem, 5vw, 4rem);
+            color: #ffd700;
+            font-style: italic;
+            line-height: 1.3;
+            margin-bottom: 2rem;
+            opacity: 0;
+            transform: translateY(50px);
+        }
+
+        .wisdom-translation {
+            font-family: 'Inter', sans-serif;
+            font-size: clamp(1.2rem, 3vw, 1.6rem);
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 3rem;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .sacred-symbols {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 4rem;
+            flex-wrap: wrap;
+            margin-top: 4rem;
+        }
+
+        .sacred-symbol {
+            font-size: 5rem;
+            cursor: pointer;
+            opacity: 0;
+            transform: scale(0) rotate(180deg);
+            transition: all 0.4s ease;
+            position: relative;
+        }
+
+        .sacred-symbol.om {
+            color: #9370db;
+        }
+
+        .sacred-symbol.lotus {
+            color: #ff69b4;
+        }
+
+        .sacred-symbol.wheel {
+            color: #ffa500;
+        }
+
+        .sacred-symbol.conch {
+            color: #20b2aa;
+        }
+
+        .sacred-symbol.peacock {
+            color: #00bfff;
+        }
+
+        .sacred-symbol::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: radial-gradient(circle, currentColor 0%, transparent 70%);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: all 0.4s ease;
+            opacity: 0;
+        }
+
+        .sacred-symbol:hover::after {
+            width: 120px;
+            height: 120px;
+            opacity: 0.2;
+        }
+
+        .sacred-symbol:hover {
+            transform: scale(1.3) rotate(0deg);
+        }
+
+        /* Magical Particles */
+        .magic-particles {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .magic-particle {
+            position: absolute;
+            width: 6px;
+            height: 6px;
+            background: radial-gradient(circle, #ffd700, transparent);
+            border-radius: 50%;
+            animation: magic-float 6s linear infinite;
+        }
+
+        @keyframes magic-float {
+            0% {
+                opacity: 0;
+                transform: translateY(100vh) rotate(0deg);
+            }
+
+            10% {
+                opacity: 1;
+            }
+
+            90% {
+                opacity: 1;
+            }
+
+            100% {
+                opacity: 0;
+                transform: translateY(-100px) rotate(360deg);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .leela-showcase {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .sacred-symbols {
+                gap: 2rem;
+            }
+
+            .sacred-symbol {
+                font-size: 4rem;
+            }
+        }
+
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Custom cursor for interactive elements */
+        .interactive:hover {
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Hero Section - Divine Manifestation -->
+    <section class="section hero" id="hero">
+        <div class="cosmic-bg"></div>
+
+        <!-- Floating Divine Elements -->
+        <div class="divine-elements">
+            <div class="divine-element peacock">🦚</div>
+            <div class="divine-element flute">🪈</div>
+            <div class="divine-element lotus">🪷</div>
+            <div class="divine-element wheel">☸️</div>
+            <div class="divine-element om">🕉️</div>
+            <div class="divine-element conch">🐚</div>
+        </div>
+
+        <!-- Magic Particles -->
+        <div class="magic-particles"></div>
+
+        <!-- Hero Content -->
+        <div class="hero-content">
+            <h1 class="main-title">श्रीकृष्ण महाराज</h1>
+            <p class="divine-subtitle">The Supreme Divine Consciousness • Eternal Bliss • Cosmic Dancer</p>
+            <a href="#leela" class="explore-btn interactive">Enter Divine Realm</a>
+        </div>
+    </section>
+
+    <!-- Leela Section - Krishna's Divine Play -->
+    <section class="section leela" id="leela">
+        <div class="leela-content">
+            <h2 class="section-title">Divine Leela</h2>
+
+            <div class="leela-showcase">
+                <div class="leela-card">
+                    <div class="leela-icon">🎭</div>
+                    <h3 class="leela-title">Cosmic Dance</h3>
+                    <p class="leela-text">The eternal dance of creation and destruction, where Krishna orchestrates the
+                        cosmic play of existence through divine rhythm and celestial harmony.</p>
+                </div>
+
+                <div class="leela-card">
+                    <div class="leela-icon">💙</div>
+                    <h3 class="leela-title">Divine Love</h3>
+                    <p class="leela-text">The purest form of unconditional love that transcends all boundaries,
+                        connecting every soul to the infinite source of compassion and grace.</p>
+                </div>
+
+                <div class="leela-card">
+                    <div class="leela-icon">⚡</div>
+                    <h3 class="leela-title">Miraculous Powers</h3>
+                    <p class="leela-text">Supernatural abilities that bend the laws of nature, demonstrating the
+                        unlimited potential of consciousness when aligned with divine will.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Wisdom Section - Sacred Knowledge -->
+    <section class="section wisdom" id="wisdom">
+        <div class="magic-particles"></div>
+
+        <div class="wisdom-content">
+            <blockquote class="wisdom-verse">
+                सर्वधर्मान्परित्यज्य मामेकं शरणं व्रज।<br>
+                अहं त्वां सर्वपापेभ्यो मोक्षयिष्यामि मा शुचः॥
+            </blockquote>
+
+            <p class="wisdom-translation">
+                "Abandon all varieties of dharma and just surrender unto Me. I shall deliver you from all sinful
+                reactions. Do not fear."
+                <br><em>— Bhagavad Gita 18.66</em>
+            </p>
+
+            <div class="sacred-symbols">
+                <div class="sacred-symbol om interactive">🕉️</div>
+                <div class="sacred-symbol lotus interactive">🪷</div>
+                <div class="sacred-symbol wheel interactive">☸️</div>
+                <div class="sacred-symbol conch interactive">🐚</div>
+                <div class="sacred-symbol peacock interactive">🦚</div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Register GSAP plugins
+        gsap.registerPlugin(ScrollTrigger, TextPlugin);
+
+        // Create magical particles
+        function createMagicParticles(container, count = 15) {
+            for (let i = 0; i < count; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'magic-particle';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.animationDelay = Math.random() * 6 + 's';
+                particle.style.animationDuration = (6 + Math.random() * 4) + 's';
+                container.appendChild(particle);
+            }
+        }
+
+        // Initialize particles
+        document.querySelectorAll('.magic-particles').forEach(container => {
+            createMagicParticles(container);
+        });
+
+        // Hero section grand entrance
+        const heroTl = gsap.timeline({ delay: 0 });
+
+        // Krishna figure entrance with dramatic effect
+        heroTl
+            .from('.divine-element', {
+                scale: 0,
+                rotation: 360,
+                opacity: 0,
+                duration: 1.5,
+                ease: 'back.out(1.7)',
+                stagger: {
+                    amount: 2,
+                    from: 'random'
+                }
+            }, '-=1')
+            .to('.main-title', {
+                opacity: 1,
+                y: 0,
+                duration: 1.5,
+                ease: 'power3.out'
+            }, '-=0.5')
+            .to('.divine-subtitle', {
+                opacity: 1,
+                y: 0,
+                duration: 1.2,
+                ease: 'power3.out'
+            }, '-=0.8')
+            .to('.explore-btn', {
+                opacity: 1,
+                y: 0,
+                duration: 1,
+                ease: 'power3.out'
+            }, '-=0.6');
+
+
+        // Leela section animations
+        gsap.to('.section-title', {
+            scrollTrigger: {
+                trigger: '.leela',
+                start: 'top 80%'
+            },
+            opacity: 1,
+            y: 0,
+            duration: 1.5,
+            ease: 'power3.out'
+        });
+
+        gsap.to('.leela-card', {
+            scrollTrigger: {
+                trigger: '.leela-showcase',
+                start: 'top 80%'
+            },
+            opacity: 1,
+            y: 0,
+            rotateX: 0,
+            duration: 1.2,
+            ease: 'power3.out',
+            stagger: 0.3
+        });
+
+        // Wisdom section dramatic entrance
+        gsap.to('.wisdom-verse', {
+            scrollTrigger: {
+                trigger: '.wisdom',
+                start: 'top 70%'
+            },
+            opacity: 1,
+            y: 0,
+            duration: 2,
+            ease: 'power3.out'
+        });
+
+        gsap.to('.wisdom-translation', {
+            scrollTrigger: {
+                trigger: '.wisdom',
+                start: 'top 60%'
+            },
+            opacity: 1,
+            y: 0,
+            duration: 1.5,
+            ease: 'power3.out'
+        });
+
+        gsap.to('.sacred-symbol', {
+            scrollTrigger: {
+                trigger: '.sacred-symbols',
+                start: 'top 80%'
+            },
+            opacity: 1,
+            scale: 1,
+            rotation: 0,
+            duration: 1,
+            ease: 'back.out(1.7)',
+            stagger: 0.2
+        });
+
+        // Sacred symbols interactions
+        document.querySelectorAll('.sacred-symbol').forEach(symbol => {
+            symbol.addEventListener('click', () => {
+                gsap.to(symbol, {
+                    scale: 1.5,
+                    rotation: 360,
+                    duration: 0.8,
+                    ease: 'power2.inOut',
+                    yoyo: true,
+                    repeat: 1
+                });
+
+                // Create ripple effect
+                gsap.fromTo(symbol, {
+                    boxShadow: '0 0 0 0 currentColor'
+                }, {
+                    boxShadow: '0 0 0 50px transparent',
+                    duration: 1,
+                    ease: 'power2.out'
+                });
+            });
+        });
+
+        // Smooth scroll for explore button
+        document.querySelector('.explore-btn').addEventListener('click', function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            target.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
+        });
+
+        // Parallax effects
+        gsap.to('.cosmic-bg', {
+            yPercent: -50,
+            ease: 'none',
+            scrollTrigger: {
+                trigger: '.hero',
+                start: 'top bottom',
+                end: 'bottom top',
+                scrub: true
+            }
+        });
+
+        // Continuous divine element rotation
+        gsap.to('.divine-element', {
+            rotation: 360,
+            duration: 20,
+            ease: 'none',
+            repeat: -1,
+            stagger: {
+                amount: 10,
+                from: 'random'
+            }
+        });
+
+        // Typing effect for subtitle (optional enhancement)
+        gsap.to('.divine-subtitle', {
+            text: {
+                value: "The Supreme Divine Consciousness • Eternal Bliss • Cosmic Dancer",
+                delimiter: ""
+            },
+            duration: 3,
+            ease: "none",
+            delay: 3
+        });
+    </script>
+</body>
+
+</html>
